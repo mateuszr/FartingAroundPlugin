@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E2ED97D14CF95AB00117CB0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E2ED97C14CF95AB00117CB0 /* Cocoa.framework */; };
 		2E2ED98714CF95AB00117CB0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E2ED98514CF95AB00117CB0 /* InfoPlist.strings */; };
+		2E2ED99014CF980200117CB0 /* SavePanelWithURLPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2ED98F14CF980200117CB0 /* SavePanelWithURLPlugin.m */; };
+		2E2ED99814CFA98C00117CB0 /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E2ED99714CFA98C00117CB0 /* JRSwizzle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -17,9 +19,13 @@
 		2E2ED97F14CF95AB00117CB0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2E2ED98014CF95AB00117CB0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2E2ED98114CF95AB00117CB0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		2E2ED98414CF95AB00117CB0 /* SavePanelWithURL-Info.plist */ = {isa = PBXFileReference; path = "SavePanelWithURL-Info.plist"; sourceTree = "<group>"; };
+		2E2ED98414CF95AB00117CB0 /* SavePanelWithURL-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SavePanelWithURL-Info.plist"; sourceTree = "<group>"; };
 		2E2ED98614CF95AB00117CB0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2E2ED98814CF95AB00117CB0 /* SavePanelWithURL-Prefix.pch */ = {isa = PBXFileReference; path = "SavePanelWithURL-Prefix.pch"; sourceTree = "<group>"; };
+		2E2ED98814CF95AB00117CB0 /* SavePanelWithURL-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SavePanelWithURL-Prefix.pch"; sourceTree = "<group>"; };
+		2E2ED98E14CF980200117CB0 /* SavePanelWithURLPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavePanelWithURLPlugin.h; sourceTree = "<group>"; };
+		2E2ED98F14CF980200117CB0 /* SavePanelWithURLPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavePanelWithURLPlugin.m; sourceTree = "<group>"; };
+		2E2ED99614CFA98C00117CB0 /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JRSwizzle.h; path = jrswizzle/JRSwizzle.h; sourceTree = SOURCE_ROOT; };
+		2E2ED99714CFA98C00117CB0 /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JRSwizzle.m; path = jrswizzle/JRSwizzle.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				2E2ED98314CF95AB00117CB0 /* Supporting Files */,
+				2E2ED98E14CF980200117CB0 /* SavePanelWithURLPlugin.h */,
+				2E2ED98F14CF980200117CB0 /* SavePanelWithURLPlugin.m */,
 			);
 			path = SavePanelWithURL;
 			sourceTree = "<group>";
@@ -81,6 +89,8 @@
 		2E2ED98314CF95AB00117CB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2E2ED99614CFA98C00117CB0 /* JRSwizzle.h */,
+				2E2ED99714CFA98C00117CB0 /* JRSwizzle.m */,
 				2E2ED98414CF95AB00117CB0 /* SavePanelWithURL-Info.plist */,
 				2E2ED98514CF95AB00117CB0 /* InfoPlist.strings */,
 				2E2ED98814CF95AB00117CB0 /* SavePanelWithURL-Prefix.pch */,
@@ -149,6 +159,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E2ED99014CF980200117CB0 /* SavePanelWithURLPlugin.m in Sources */,
+				2E2ED99814CFA98C00117CB0 /* JRSwizzle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +232,10 @@
 				GCC_PREFIX_HEADER = "SavePanelWithURL/SavePanelWithURL-Prefix.pch";
 				INFOPLIST_FILE = "SavePanelWithURL/SavePanelWithURL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -232,6 +248,10 @@
 				GCC_PREFIX_HEADER = "SavePanelWithURL/SavePanelWithURL-Prefix.pch";
 				INFOPLIST_FILE = "SavePanelWithURL/SavePanelWithURL-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = bundle;
 			};
