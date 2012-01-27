@@ -30,8 +30,7 @@
 + (void) load
 {
   SavePanelWithURLPlugin *plugin = [SavePanelWithURLPlugin sharedInstance];
-  // ... do whatever
-  NSLog(@"SavePanelWithURLPlugin %@ installed, everyday I'm swizzling", plugin);
+  NSLog(@"everyday I'm swizzlin");
   [[self class] swizzleMyNizzle];
 }
 
